@@ -13,6 +13,6 @@ import retrofit2.http.GET;
  */
 public interface VatApi {
 
-    @GET("/")
+    @GET(".")
     Call<Vat> getVat();
 }

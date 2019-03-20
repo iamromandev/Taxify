@@ -1,5 +1,7 @@
 package com.example.taxify.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
 public class Rate {
     private String name;
     private String code;
+    @SerializedName("country_code")
     private String countryCode;
     private List<Period> periods;
 

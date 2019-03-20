@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface RateCallback {
     void onRates(List<Rate> rates);
+
+    void onError(String message);
 }

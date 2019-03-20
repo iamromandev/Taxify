@@ -24,6 +24,7 @@ public class VatClient implements Callback<Vat> {
     private static final String url = "http://jsonvat.com";
 
     private VatApi api;
+    private RateCallback callback;
 
     public VatClient() {
 
@@ -43,18 +44,24 @@ public class VatClient implements Callback<Vat> {
         api = retrofit.create(VatApi.class);
     }
 
-    public void loadRates() {
+    public void loadRates(RateCallback callback) {
+        this.callback = callback;
         Call<Vat> call = api.getVat();
         call.enqueue(this);
     }
 
     @Override
     public void onResponse(Call<Vat> call, Response<Vat> response) {
-
+        if (response.isSuccessful()) {
+            Vat vat = response.body();
+            callback.onRates(vat.getRates());
+        } else {
+            callback.onError(response.message());
+        }
     }
 
     @Override
     public void onFailure(Call<Vat> call, Throwable t) {
-
+        callback.onError(t.getMessage());
     }
 }
