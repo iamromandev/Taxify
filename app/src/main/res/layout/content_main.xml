@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    auto:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
@@ -13,16 +13,43 @@
         android:id="@+id/picker_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        auto:ccp_defaultNameCode="IT"
+        auto:ccp_rememberLastSelection="true"
+        auto:layout_constraintEnd_toEndOf="parent"
+        auto:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="@string/hint_enter_currency"
+        android:inputType="numberDecimal"
         android:minWidth="200dp"
-        app:layout_constraintEnd_toStartOf="@id/picker_country"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        auto:layout_constraintEnd_toStartOf="@id/picker_country"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/group_rate_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintTop_toBottomOf="@id/edit_currency">
+
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_vat_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        auto:layout_constraintBottom_toBottomOf="parent"
+        auto:layout_constraintEnd_toEndOf="parent"
+        auto:layout_constraintStart_toStartOf="parent"
+        auto:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
